@@ -15,8 +15,10 @@ def test_ocr():
         images = convert_pdf_to_image(pdf_path)
         for image in images:
             gray_image = image.convert('L')
-            gray_image.save(f"./docs/{i}doc_gray.png")
+            gray_image.save(f"./docs/invoice{i}_gray.png")
             text = pytesseract.image_to_string(gray_image)
+            with open(f"./docs/invoice{i}_text.txt", "w") as text_file:
+                text_file.write(text)
             print(f"Texte extrait du document {i} :\n{text}\n{'-'*40}")
         
 
