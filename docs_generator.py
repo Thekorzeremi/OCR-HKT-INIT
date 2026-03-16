@@ -18,7 +18,6 @@ def wipe_generated_docs():
 
 def generate_documents():
     for _ in range(10):
-        # générer du bruit dans les documents pour tester l'OCR
         count = _ + 1
         name = fake.name()
         today = fake.date()  
@@ -29,13 +28,6 @@ def generate_documents():
         pdf.cell(text=name)
         pdf.ln()
         pdf.cell(text=today)    
-
-        # ajouter du bruit (pas des mots mais des écritures manuscrites)
-        for _ in range(5):
-            x = fake.random_int(min=10, max=190)
-            y = fake.random_int(min=10, max=280)
-            pdf.set_xy(x, y)
-            pdf.cell(text=fake.word())
 
         pdf.output("./generated_docs/" + str(count) + "doc_.pdf")
 
