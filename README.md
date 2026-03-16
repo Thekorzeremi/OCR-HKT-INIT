@@ -9,4 +9,7 @@ pytesseract
 
 Install Tesseract on you host machine also
 
-Then run docs_generator.py and run ocr_test.py
+Move invoices PDF to /docs, rename them invoice{nb}.pdf and then run ocr_test.py
+
+If you don't have data to test like invoices PDF, please :
+run docs_generator.py and run ocr_test_generated_docs.py

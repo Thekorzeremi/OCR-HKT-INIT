@@ -7,15 +7,12 @@ def  convert_pdf_to_image(pdf_path):
     return images
 
 def test_ocr():
-    pdf_files = [f for f in os.listdir("./docs") if f.endswith(".pdf")]
-    num_files = len(pdf_files)
-
-    for i in range(1, num_files + 1):
-        pdf_path = f"./docs/invoice{i}.pdf"
+    for i in range(1, 11):
+        pdf_path = f"./generated_docs/{i}doc_.pdf"
         images = convert_pdf_to_image(pdf_path)
         for image in images:
             gray_image = image.convert('L')
-            gray_image.save(f"./docs/{i}doc_gray.png")
+            gray_image.save(f"./generated_docs/{i}doc_gray.png")
             text = pytesseract.image_to_string(gray_image)
             print(f"Texte extrait du document {i} :\n{text}\n{'-'*40}")
         
